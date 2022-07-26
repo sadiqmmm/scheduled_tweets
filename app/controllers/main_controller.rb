@@ -1,3 +1,5 @@
 class MainController < ApplicationController
-  def index; end
+  def index
+    flash[:notice] = 'This is a flash!'
+  end
 end
