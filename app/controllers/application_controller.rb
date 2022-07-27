@@ -8,8 +8,9 @@ class ApplicationController < ActionController::Base
   end
 
   def authentication!
-    flash[:danger] = "You aren't authorized to visit that page."
-    redirect_to root_path
-    return if current_user
+    unless current_user
+      flash[:danger] = "You aren't authorized to visit that page."
+      redirect_to root_path
+    end
   end
 end
