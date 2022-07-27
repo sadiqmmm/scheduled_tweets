@@ -1,17 +1,15 @@
 class SessionsController < ApplicationController
-  def new
-    @user = User.new
-  end
+  def new; end
 
   def create
-    @user = User.find_by(email: params[:user][:email])
+    @user = User.find_by(email: params[:email])
 
-    if @user&.authenticate(params[:user][:password])
+    if @user&.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:success] = 'User signin successfully.'
       redirect_to root_path
     else
-      flash[:danger] = 'Invalid sign in details.'
+      flash[:danger] = 'Invalid Email or Passowrd.'
       render :new, status: :unprocessable_entity
     end
   end
