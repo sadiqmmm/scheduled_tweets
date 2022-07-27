@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    if current_user
+    if logged_in?
       flash[:warning] = 'You\'ve already signed in.'
       redirect_to root_path
     end

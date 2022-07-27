@@ -1,6 +1,6 @@
 class RegistrationsController < ApplicationController
   def new
-    if current_user
+    if logged_in?
       flash[:warning] = 'You\'ve already signed up.'
       redirect_to root_path
     else

@@ -1,6 +1,6 @@
 class PasswordResetsController < ApplicationController
   def new
-    if current_user
+    if logged_in?
       flash[:warning] = 'Edit your password'
       redirect_to root_path
     end

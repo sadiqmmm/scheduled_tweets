@@ -19,7 +19,7 @@
           <% end %>
         </li>
         
-        <% if current_user %>
+        <% if logged_in? %>
           <li class="nav-item">
             <%= link_to password_path, class: "nav-link" do %>
               Edit Password
