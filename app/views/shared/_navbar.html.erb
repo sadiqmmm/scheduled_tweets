@@ -18,9 +18,20 @@
             About
           <% end %>
         </li>
-         <li class="nav-item">
+        <li class="nav-item">
           <%= link_to signup_path, class: "nav-link" do %>
-            Signin
+            Sign up
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <% if current_user %>
+            <%= link_to signout_path, class: "nav-link", data: {"turbo-method": :delete, confirm: "Are you sure?"} do %>
+              Sign out
+            <% end %>
+          <% else %>
+            <%= link_to signin_path, class: "nav-link" do %>
+              Sign in
+            <% end %>
           <% end %>
         </li>
       </ul>
