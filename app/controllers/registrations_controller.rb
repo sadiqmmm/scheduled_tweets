@@ -1,6 +1,11 @@
 class RegistrationsController < ApplicationController
   def new
-    @user = User.new
+    if current_user
+      flash[:warning] = 'You\'ve already signed up.'
+      redirect_to root_path
+    else
+      @user = User.new
+    end
   end
 
   def create

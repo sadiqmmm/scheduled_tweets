@@ -18,11 +18,7 @@
             About
           <% end %>
         </li>
-        <li class="nav-item">
-          <%= link_to signup_path, class: "nav-link" do %>
-            Sign up
-          <% end %>
-        </li>
+        
         <% if current_user %>
           <li class="nav-item">
             <%= link_to password_path, class: "nav-link" do %>
@@ -35,6 +31,11 @@
             <% end %>
           </li>
         <% else %>
+        <li class="nav-item">
+          <%= link_to signup_path, class: "nav-link" do %>
+            Sign up
+          <% end %>
+        </li>
           <li class="nav-item">
             <%= link_to signin_path, class: "nav-link" do %>
               Sign in

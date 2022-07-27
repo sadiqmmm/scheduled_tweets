@@ -1,8 +1,8 @@
 <div class="container">
-  <h1> Edit Password</h1>
-  
-  <%= form_with(model: current_user, url: password_path) do |form| %>    
-    <%= render 'shared/errors', object: current_user %>    
+  <h1> Reset your Password</h1>
+
+  <%= form_with(model: @user, url: password_reset_update_path(token: params[:token])) do |form| %> 
+  <%= render 'shared/errors', object: @user %>      
     <div class="mb-3">
       <%= form.label :password %>
       <%= form.password_field :password, class: "form-control", required: true %>
@@ -11,6 +11,6 @@
       <%= form.label :password_confirmation %>
       <%= form.password_field :password_confirmation, class: "form-control", required: true %>
     </div>
-    <%= form.submit "Update Password", class: "btn btn-lg btn-success" %>
+    <%= form.submit "Reset Password", class: "btn btn-lg btn-success" %>
   <% end %>
 </div>

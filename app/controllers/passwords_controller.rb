@@ -8,7 +8,6 @@ class PasswordsController < ApplicationController
       flash[:success] = 'Password updated successfully.'
       redirect_to root_path
     else
-      flash[:danger] = 'Invalid Passowrd.'
       render :edit, status: :unprocessable_entity
     end
   end

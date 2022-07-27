@@ -4,12 +4,13 @@
   <%= form_with url: signin_path do |form| %>         
     <div class="mb-3">
       <%= form.label :email %>
-      <%= form.email_field :email, class: "form-control" %>
+      <%= form.email_field :email, class: "form-control", required: true %>
     </div>
     <div class="mb-3">
       <%= form.label :password %>
-      <%= form.password_field :password, class: "form-control"%>
+      <%= form.password_field :password, class: "form-control", required: true %>
     </div>    
+    <%= render 'shared/link' %>
     <%= form.submit "Sign In", class: "btn btn-lg btn-success" %>
   <% end %>
 </div>

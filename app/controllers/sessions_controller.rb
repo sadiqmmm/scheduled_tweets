@@ -1,12 +1,17 @@
 class SessionsController < ApplicationController
-  def new; end
+  def new
+    if current_user
+      flash[:warning] = 'You\'ve already signed in.'
+      redirect_to root_path
+    end
+  end
 
   def create
     @user = User.find_by(email: params[:email])
 
     if @user&.authenticate(params[:password])
       session[:user_id] = @user.id
-      flash[:success] = 'User signin successfully.'
+      flash[:success] = 'Signin successfully.'
       redirect_to root_path
     else
       flash[:danger] = 'Invalid Email or Passowrd.'
@@ -17,7 +22,7 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
 
-    flash[:danger] = 'User Signout successfully'
+    flash[:danger] = 'Signout successfully'
     redirect_to root_path
   end
 end
